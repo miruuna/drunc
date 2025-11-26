@@ -227,13 +227,9 @@ index_dict = generate_index_dict(sidebar_nav)
 generate_gh_pages(sidebar_nav, index_dict)
 
 parent_dir = ".."
-# Recursive
-for root, dirs, files in os.walk(parent_dir):
-    print(f"Directory: {root}")
-    for d in dirs:
-        print(f"  [DIR]  {d}")
-    for f in files:
-        print(f"  [FILE] {f}")
+# Non-recursive
+for entry in os.listdir(parent_dir):
+    print(entry)
 
 
 # Write top-level index file for Developer Documentation
