@@ -228,15 +228,15 @@ generate_gh_pages(sidebar_nav, index_dict)
 
 parent_dir = ".."
 
+# Write top-level index file for Developer Documentation
+gh_wiki_dir = Path("..") / GH_pages_folder_name
+# Ensure wiki gh pages folder exists
+gh_wiki_dir.mkdir(parents=True, exist_ok=True)
 for entry in os.listdir(parent_dir):
     full_path = os.path.join(parent_dir, entry)
     if os.path.isdir(full_path):
         print(entry)
-
-
-
-# Write top-level index file for Developer Documentation
-gh_wiki_dir = Path("..") / GH_pages_folder_name
+        
 index_path = os.path.join(gh_wiki_dir, "index.md")
 
 with open(index_path, "w", encoding="utf-8") as f:
