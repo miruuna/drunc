@@ -226,6 +226,16 @@ index_dict = generate_index_dict(sidebar_nav)
 # Process files and generate GH pages
 generate_gh_pages(sidebar_nav, index_dict)
 
+parent_dir = ".."
+# Recursive
+for root, dirs, files in os.walk(parent_dir):
+    print(f"Directory: {root}")
+    for d in dirs:
+        print(f"  [DIR]  {d}")
+    for f in files:
+        print(f"  [FILE] {f}")
+
+
 # Write top-level index file for Developer Documentation
 gh_wiki_dir = Path("..") / GH_pages_folder_name
 index_path = os.path.join(gh_wiki_dir, "index.md")
