@@ -6,7 +6,8 @@ on:
     - cron: "0 0 * * 6" # midnight every Saturday
   gollum:
   push:
-    miruuna/fix-broken-pages
+    branches:
+      - miruuna/fix-broken-pages
 
 jobs: 
   docs: 
