@@ -15,17 +15,19 @@ jobs:
 
       - name: Verify __init__.py presence
         run: |
+          # List directories missing __init__.py (excluding some folders)
           missing=$(find . -type d \
-            -not -path "./.git*" \
-            -not -path "./.github*" \
-            -not -path "./tests*" \
-            -not -path "./docs*" \
-            -exec test -e "{}/__init__.py" \; -print)
+            -path './.git' -prune -o \
+            -path './.github' -prune -o \
+            -path './tests' -prune -o \
+            -path './docs' -prune -o \
+            -not -path '.' \
+            -not -exec test -e "{}/__init__.py" \; -print)
 
           if [ -n "$missing" ]; then
-            echo "The following folders are missing __init__.py:"
+            echo "❌ The following folders are missing __init__.py:"
             echo "$missing"
             exit 1
           else
-            echo "All folders contain __init__.py"
+            echo "✅ All applicable folders contain __init__.py"
           fi
