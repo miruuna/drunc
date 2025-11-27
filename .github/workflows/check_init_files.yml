@@ -1,10 +1,7 @@
 name: Check for __init__.py files
 
 on: 
-  push:
-      branches:
-        - miruuna/fix-broken-pages
-
+  pull_request:
 
 jobs:
   check-init:
