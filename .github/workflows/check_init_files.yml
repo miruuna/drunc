@@ -1,0 +1,31 @@
+name: Check for __init__.py files
+
+on: pull_request
+  push:
+      branches:
+        - miruuna/fix-broken-pages
+
+
+jobs:
+  check-init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify __init__.py presence
+        run: |
+          missing=$(find . -type d \
+            -not -path "./.git*" \
+            -not -path "./.github*" \
+            -not -path "./tests*" \
+            -not -path "./docs*" \
+            -exec test -e "{}/__init__.py" \; -print)
+
+          if [ -n "$missing" ]; then
+            echo "The following folders are missing __init__.py:"
+            echo "$missing"
+            exit 1
+          else
+            echo "All folders contain __init__.py"
+          fi
