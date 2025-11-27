@@ -1,6 +1,6 @@
 name: Check for __init__.py files
 
-on: pull_request
+on: 
   push:
       branches:
         - miruuna/fix-broken-pages
