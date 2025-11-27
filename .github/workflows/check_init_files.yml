@@ -15,7 +15,6 @@ jobs:
 
       - name: Verify __init__.py presence
         run: |
-          run: |
           missing=$(find src -mindepth 1 -type d \
             -not -path "./.git*" \
             -not -path "./.github*" \
