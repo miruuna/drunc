@@ -17,9 +17,10 @@ for path in root_folder.rglob("*.py"):
     if any(part in excluded_folders for part in path.parts):
         continue
     
-    # Skip if parent folder has no __init__.py
-    if not (path.parent / "__init__.py").exists():
-        path.parent.mkdir(parents=True, exist_ok=True)
+    init_file = path.parent / "__init__.py"
+    if not init_file.exists():
+        init_file.parent.mkdir(parents=True, exist_ok=True)
+        init_file.touch()
 
 
     # Module and documentation paths relative to root
