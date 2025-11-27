@@ -25,6 +25,7 @@ for path in root_folder.rglob("*.py"):
         init_file.write_text("# Package initializer\n")
 
         print("init exists", init_file.exists())
+        print(init_file)
     # Module and documentation paths relative to root
     module_path = path.relative_to(root_folder).with_suffix("")
     doc_path = path.relative_to(root_folder).with_suffix(".md")
