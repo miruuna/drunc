@@ -20,7 +20,7 @@ for path in root_folder.rglob("*.py"):
     init_file = path.parent / "__init__.py"
     if not init_file.exists():
         init_file.parent.mkdir(parents=True, exist_ok=True)
-        init_file.touch()
+        init_file.write_text("# Package initializer\n")
 
 
     # Module and documentation paths relative to root
